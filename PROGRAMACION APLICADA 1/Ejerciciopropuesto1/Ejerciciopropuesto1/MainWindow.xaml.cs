@@ -11,9 +11,6 @@ using System.Windows.Shapes;
 
 namespace Ejercicio_1
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -23,27 +20,22 @@ namespace Ejercicio_1
 
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(txtIngreso.Text, out double ingreso))
+            if (!double.TryParse(txtIngreso.Text, out var ingreso))
             {
-                double fonavi = 0;//variables 
-                double renta = 0;
-                double afp = 0;
-
-                if (chkFonavi.IsChecked == true) fonavi = ingreso * 0.08;//formulario de conversion
-                if (chkImpRenta.IsChecked == true) renta = ingreso * 0.05;
-                if (chkAFP.IsChecked == true) afp = ingreso * 0.12;
-
-                double totalPagar = ingreso - (fonavi + renta + afp);
-
-                txtResultadoFonavi.Text = fonavi.ToString("C");// para pasar a modo dinero
-                txtResultadoRenta.Text = renta.ToString("C");
-                txtResultadoAFP.Text = afp.ToString("C");
-                txtResultadoTotal.Text = totalPagar.ToString("C");
+                MessageBox.Show("Por favor, ingrese un monto válido en el Ingreso.");
+                return;
             }
-            else
-            {
-                MessageBox.Show("Ingrese monto valido");
-            }
+
+            var fonavi = chkFonavi.IsChecked == true ? ingreso * 0.08 : 0;
+            var renta = chkImpRenta.IsChecked == true ? ingreso * 0.05 : 0;
+            var afp = chkAFP.IsChecked == true ? ingreso * 0.12 : 0;
+
+            var totalPagar = ingreso - fonavi - renta - afp;
+
+            txtResultadoFonavi.Text = fonavi.ToString("C");
+            txtResultadoRenta.Text = renta.ToString("C");
+            txtResultadoAFP.Text = afp.ToString("C");
+            txtResultadoTotal.Text = totalPagar.ToString("C");
         }
     }
 }
