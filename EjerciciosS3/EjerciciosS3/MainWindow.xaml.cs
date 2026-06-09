@@ -32,11 +32,11 @@ namespace EjerciciosS3
             }
             if(cbColorTexto.IsChecked == true)
             {
-                lbtexto.Foreground = Brushes.Black;
+                lbtexto.Foreground = Brushes.Blue;
             }
             if(cbColorFondo.IsChecked==true)
             {
-                lbtexto.Background = Brushes.Black;
+                lbtexto.Background = Brushes.Aqua;
             }
         }
 
@@ -51,11 +51,11 @@ namespace EjerciciosS3
             }
             if (rbColorTexto.IsChecked == true)
             {
-                lbTextoRadio.Foreground = Brushes.Black;
+                lbTextoRadio.Foreground = Brushes.Pink;
             }
             if (rbColorFondo.IsChecked == true)
             {
-                lbTextoRadio.Background = Brushes.Black;
+                lbTextoRadio.Background = Brushes.Purple;
             }
         }
     }
