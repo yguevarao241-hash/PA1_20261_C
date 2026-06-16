@@ -1,0 +1,46 @@
+﻿<Window x:Class="semana4.ListBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:semana4"
+        mc:Ignorable="d"
+        Title="ListBox" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+
+            <ListBox x:Name="LbFrutas" Width="150" Height="120">
+                <ListBoxItem>Pera</ListBoxItem>
+                <ListBoxItem>Piña</ListBoxItem>
+                <ListBoxItem>Sandía</ListBoxItem>
+                <ListBoxItem>Papaya</ListBoxItem>
+            </ListBox>
+
+            <Button x:Name="btnMostrar"
+                    Content="Mostrar Seleccionado"
+                    Width="150"
+                    Margin="0,10,0,0"
+                    Click="btnMostrar_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+
+            <Label Content="Nueva Fruta"/>
+
+            <TextBox x:Name="txtNuevo"
+                     Width="150"/>
+
+            <Button x:Name="btnAgregar"
+                    Content="Agregar"
+                    Width="150"
+                    Margin="0,10,0,0"
+                    Click="btnAgregar_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
