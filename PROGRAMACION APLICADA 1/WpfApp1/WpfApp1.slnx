@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Balance domestico/Balance domestico.csproj" />
+  <Project Path="WpfApp1/WpfApp1.csproj" />
+</Solution>

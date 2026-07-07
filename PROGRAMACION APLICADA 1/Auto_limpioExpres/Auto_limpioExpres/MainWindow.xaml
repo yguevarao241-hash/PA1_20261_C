@@ -1,0 +1,135 @@
+﻿<Window x:Class="Auto_limpioExpres.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Auto_limpioExpres"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#FFF4E2E2">
+        <Label Content="Placa:" Margin="21,10,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+
+        <TextBox x:Name="txtPlaca"
+                 Margin="80,10,0,0"
+                 Width="150"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top" Height="28"/>
+
+        <GroupBox Header=""
+                  Margin="20,60,0,0"
+                  Width="250"
+                  Height="120"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top" Background="#FFE0BEDE">
+
+            <StackPanel>
+                <RadioButton x:Name="rbAuto"
+                             Content="Auto (S/.20)" FontFamily="Stencil" FontSize="16" FontWeight="Bold"/>
+
+                <RadioButton x:Name="rbCamioneta"
+                             Content="Camioneta (S/.30)" FontFamily="Stencil" FontSize="16" FontWeight="Bold"/>
+
+                <RadioButton x:Name="rbSUV"
+                             Content="SUV (S/.35)" FontFamily="Stencil" FontSize="16" FontWeight="Bold"/>
+            </StackPanel>
+
+        </GroupBox>
+
+        <GroupBox Header=""
+                  Margin="300,60,0,0"
+                  Width="250"
+                  Height="120"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top" Background="#FFD9C6DF">
+
+            <StackPanel>
+
+                <CheckBox x:Name="cbEncerado"
+                          Content="Encerado Premium (S/.15)" FontSize="16" FontWeight="Bold"/>
+
+                <CheckBox x:Name="cbMotor"
+                          Content="Lavado Motor (S/.20)" FontSize="16" FontWeight="Bold"/>
+
+                <CheckBox x:Name="cbSalon"
+                          Content="Limpieza Salón (S/.25)" FontSize="16" FontWeight="Bold"/>
+
+            </StackPanel>
+
+        </GroupBox>
+
+        <Button x:Name="btnRegistrar"
+                Content="Registrar"
+                Width="120"
+                Height="35"
+                Margin="600,90,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="btnRegistrar_Click"/>
+
+        <Label x:Name="lbTotal"
+               Content="Total: S/. 0"
+               Margin="600,140,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+
+        <ListView x:Name="lvHistorial"
+                  Margin="20,220,20,62" FontFamily="Stencil" FontSize="14" Background="#FFCBEDDA">
+
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn Header="Placa"
+                                    Width="120"
+                                    DisplayMemberBinding="{Binding Placa}"/>
+
+                    <GridViewColumn Header="Tipo Vehículo"
+                                    Width="150"
+                                    DisplayMemberBinding="{Binding TipoVehiculo}"/>
+
+                    <GridViewColumn Header="Servicios Extras"
+                                    Width="120"
+                                    DisplayMemberBinding="{Binding ServiciosExtras}"/>
+
+                    <GridViewColumn Header="Total"
+                                    Width="120"
+                                    DisplayMemberBinding="{Binding TotalPagar}"/>
+
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+
+        <GroupBox Header="Estadísticas"
+                  Margin="20,450,0,0"
+                  Width="700"
+                  Height="100"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+
+            <StackPanel>
+
+                <Label x:Name="lbAutos"
+                       Content="Autos: 0"/>
+
+                <Label x:Name="lbCamionetas"
+                       Content="Camionetas: 0"/>
+
+                <Label x:Name="lbSUV"
+                       Content="SUV: 0"/>
+
+                <Label x:Name="lbRecaudado"
+                       Content="Total Recaudado: S/.0"/>
+
+                <Label x:Name="lbSalon"
+                       Content="Clientes con Limpieza Salón: 0"/>
+
+            </StackPanel>
+
+        </GroupBox>
+        <Label Content="Servicios Adicionales" HorizontalAlignment="Left" Margin="300,42,0,0" VerticalAlignment="Top" Width="264" FontWeight="Bold" FontFamily="ROG Fonts" FontSize="14"/>
+        <Label Content="Categoría Tarifa Base" HorizontalAlignment="Left" Margin="21,46,0,0" VerticalAlignment="Top" Width="233" FontSize="14" FontFamily="ROG Fonts"/>
+
+    </Grid>
+</Window>
