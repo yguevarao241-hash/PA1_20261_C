@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Imagen/Imagen.csproj" />
+  <Project Path="Semana 7/Tragamonedas.csproj" />
+  <Project Path="Tragamonedasvs2/Tragamonedasvs2.csproj" />
+</Solution>
