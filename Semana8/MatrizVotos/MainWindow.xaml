@@ -1,0 +1,111 @@
+﻿<Window x:Class="MatrizVotos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Matriz" Height="450" Width="800"
+        Loaded="Window_Loaded">
+
+    <Grid Margin="20">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="420"/>
+            <ColumnDefinition Width="180"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- MATRIZ -->
+        <Border BorderBrush="Gray" BorderThickness="1" Background="#FFF8F6D5">
+
+            <StackPanel>
+
+                <TextBlock Text="Votos por Partido y Zona"
+                           FontWeight="Bold"
+                           FontSize="16"
+                           Margin="0,10"
+                           TextAlignment="Center"/>
+
+                <UniformGrid Rows="5" Columns="5" Margin="10">
+
+                    <TextBlock/>
+                    <TextBlock Text="A" HorizontalAlignment="Center"/>
+                    <TextBlock Text="B" HorizontalAlignment="Center"/>
+                    <TextBlock Text="C" HorizontalAlignment="Center"/>
+                    <TextBlock Text="D" HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Buhito"/>
+                    <TextBox x:Name="txt00"/>
+                    <TextBox x:Name="txt01"/>
+                    <TextBox x:Name="txt02"/>
+                    <TextBox x:Name="txt03"/>
+
+                    <TextBlock Text="Aguila"/>
+                    <TextBox x:Name="txt10"/>
+                    <TextBox x:Name="txt11"/>
+                    <TextBox x:Name="txt12"/>
+                    <TextBox x:Name="txt13"/>
+
+                    <TextBlock Text="Torito"/>
+                    <TextBox x:Name="txt20"/>
+                    <TextBox x:Name="txt21"/>
+                    <TextBox x:Name="txt22"/>
+                    <TextBox x:Name="txt23"/>
+
+                    <TextBlock Text="Lorito"/>
+                    <TextBox x:Name="txt30"/>
+                    <TextBox x:Name="txt31"/>
+                    <TextBox x:Name="txt32"/>
+                    <TextBox x:Name="txt33"/>
+
+                </UniformGrid>
+
+            </StackPanel>
+
+        </Border>
+
+        <!-- RESULTADOS -->
+        <StackPanel Grid.Column="1" Margin="20">
+
+            <Button x:Name="btnResultados"
+                    Content="Resultados"
+                    Height="35"
+                    Click="btnResultados_Click" Background="#FF8ACDD6"/>
+
+            <TextBlock Text="Total Votantes"
+                       Margin="0,20,0,0"
+                       FontWeight="Bold"
+                       Background="LightGreen"
+                       TextAlignment="Center"/>
+
+            <TextBlock x:Name="tbTotal"
+                       Background="#FFCEF0CE"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       TextAlignment="Center"/>
+
+            <TextBlock Text="Candidato Ganador"
+                       Margin="0,20,0,0"
+                       FontWeight="Bold"
+                       Background="LightGreen"
+                       TextAlignment="Center"/>
+
+            <TextBlock x:Name="tbGanador"
+                       Background="#FFD6F0D6"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       TextAlignment="Center"/>
+
+            <TextBlock Text="Zona con más votantes"
+                       Margin="0,20,0,0"
+                       FontWeight="Bold"
+                       Background="LightGreen"
+                       TextAlignment="Center"/>
+
+            <TextBlock x:Name="tbZona"
+                       Background="#FFC4F1C4"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       TextAlignment="Center"/>
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>

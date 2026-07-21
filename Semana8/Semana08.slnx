@@ -1,4 +1,6 @@
 <Solution>
+  <Project Path="MatrizVotos/MatrizVotos.csproj" Id="196e1eba-3756-48eb-9d5a-ec173fb47281" />
   <Project Path="Menu principal/Menu principal.csproj" />
   <Project Path="MenuContextual/MenuContextual.csproj" />
+  <Project Path="Temperaturas/Temperaturas.csproj" Id="2f34d62c-a61e-457b-878e-7129baad7a87" />
 </Solution>
