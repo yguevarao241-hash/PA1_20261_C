@@ -45,16 +45,27 @@ namespace MatrizVotos
                 { txt20, txt21, txt22, txt23 },
                 { txt30, txt31, txt32, txt33 }
             };
+            txt00.Text = "122";
+            txt01.Text = "254";
+            txt02.Text = "382";
+            txt03.Text = "445";
 
-            Random random = new Random();
+            txt10.Text = "472";
+            txt11.Text = "364";
+            txt12.Text = "205";
+            txt13.Text = "228";
 
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    txtVotos[i, j].Text = random.Next(100, 500).ToString();
-                }
-            }
+            txt20.Text = "143";
+            txt21.Text = "117";
+            txt22.Text = "474";
+            txt23.Text = "293";
+
+            txt30.Text = "411";
+            txt31.Text = "202";
+            txt32.Text = "261";
+            txt33.Text = "335";
+        
+      
         }
 
         private void btnResultados_Click(object sender, RoutedEventArgs e)
