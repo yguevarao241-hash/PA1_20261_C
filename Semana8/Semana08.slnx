@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Menu principal/Menu principal.csproj" />
+  <Project Path="MenuContextual/MenuContextual.csproj" />
+</Solution>
