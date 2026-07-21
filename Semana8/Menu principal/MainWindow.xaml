@@ -8,9 +8,12 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
+
         <DockPanel>
+
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_Archivo" Click="MenuItem_Click">
+
+                <MenuItem Header="_Archivo">
                     <MenuItem Header="Nuevo"/>
                     <MenuItem Header="Abrir"/>
                     <MenuItem Header="Guardar"/>
@@ -19,30 +22,46 @@
                 </MenuItem>
 
                 <MenuItem Header="_Herramientas">
+
                     <MenuItem Header="Administrar Usuarios">
                         <MenuItem.Icon>
-                            <Image Source="C:\PAI\MenuContextuall\Imagenes\logro-del-objetivo.png" 
-                                   Width="16" 
+                            <Image Source="C:\PAI\MenuContextuall\Imagenes\logro-del-objetivo.png"
+                                   Width="16"
                                    Height="16"/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header=" Mostrar Grupos" IsCheckable="True" IsChecked="True"/>
+                    <MenuItem Header="Mostrar Grupos"
+                              IsCheckable="True"
+                              IsChecked="True"/>
+
                 </MenuItem>
+
             </Menu>
+
             <ToolBarTray DockPanel.Dock="Top">
+
                 <ToolBar>
-                    <Button Content="Nuevo" ToolTip="Nuevo"/>
-                    <Button Content="Abrir" ToolTip="Abrir"/>
-                    <Button Content="Guardar" ToolTip="Guardar"/>
-                </ToolBar>
-                <ToolBar>
-                    <Button Content="Muevo"/>
+                    <Button Content="Nuevo"/>
                     <Button Content="Abrir"/>
                     <Button Content="Guardar"/>
                 </ToolBar>
+
+                <ToolBar>
+                    <Button Content="Cortar"/>
+                    <Button Content="Copiar"/>
+                    <Button Content="Pegar"/>
+                </ToolBar>
+
             </ToolBarTray>
-            <TextBox TextWrapping="Wrap" Text="Text box" TextChanged="TextBox_TextChanged" Width="100"/>
+
+            <TextBox Width="300"
+                     Height="250"
+                     TextWrapping="Wrap"
+                     Text="TextBox"/>
+
         </DockPanel>
+
     </Grid>
+
 </Window>

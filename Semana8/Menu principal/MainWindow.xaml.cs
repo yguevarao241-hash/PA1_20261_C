@@ -24,5 +24,15 @@ namespace Menu_principal
         {
             this.Close();
         }
+
+        private void CommandBinding_Nuevo(object sender, CanExecuteRoutedEventArgs e)
+        {
+
+        }
+
+        private void CommandBinding_Abrir(object sender, CanExecuteRoutedEventArgs e)
+        {
+
+        }
     }
 }

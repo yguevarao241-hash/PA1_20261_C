@@ -20,28 +20,5 @@ namespace MenuContextual
         {
             InitializeComponent();
         }
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            MenuItem menu = sender as MenuItem;
-
-            switch (menu.Header.ToString())
-            {
-                case "Menu Item 1":
-                    MessageBox.Show("Seleccionaste el Menú 1");
-                    break;
-
-                case "Menu Item 2":
-                    MessageBox.Show("Seleccionaste el Menú 2");
-                    break;
-
-                case "Menu Item 3":
-                    MessageBox.Show("Seleccionaste el Menú 3");
-                    break;
-
-                case "Salir":
-                    Close();
-                    break;
-            }
-        }
-        }
+    }
 }
