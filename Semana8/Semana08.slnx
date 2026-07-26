@@ -3,4 +3,5 @@
   <Project Path="Menu principal/Menu principal.csproj" />
   <Project Path="MenuContextual/MenuContextual.csproj" />
   <Project Path="Temperaturas/Temperaturas.csproj" Id="2f34d62c-a61e-457b-878e-7129baad7a87" />
+  <Project Path="Votantes/Votantes.csproj" Id="6e81bed8-5206-4541-839a-02b62a3575ad" />
 </Solution>
