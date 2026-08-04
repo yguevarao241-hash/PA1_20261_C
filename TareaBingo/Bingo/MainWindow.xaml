@@ -299,7 +299,7 @@
 
 
 
-                <TextBlock Text="Números cantados"
+                <TextBlock Text="Numeros contados "
                            FontWeight="Bold"
                            FontSize="16"
                            Margin="0,15,0,0"
@@ -314,6 +314,7 @@
 
 
             </StackPanel>
+            <Label Grid.Column="1" Content="Leer Numeros " HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" Background="#FFD99393" FontFamily="Segoe UI Black" FontSize="22"/>
 
 
 
@@ -350,6 +351,7 @@
 
 
         </StackPanel>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="2"/>
 
 
 
