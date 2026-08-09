@@ -7,9 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="btnVerificacionConexion" Content="Boton Conectar a SQL" HorizontalAlignment="Left" Margin="237,106,0,0" VerticalAlignment="Top" Click="btnVerificacionConexion_Click"/>
-        <Button x:Name="btnCargarCategorias" Content="CargarCategorias" HorizontalAlignment="Left" Margin="450,106,0,0" VerticalAlignment="Top" Click="btnCargarCategorias_Click"/>
-        <ComboBox x:Name="cbxCategorias" HorizontalAlignment="Left" Margin="237,171,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="Nombre"/>
-        <Button x:Name="btnMostrarSelecionado" Content="Mostrar Selecionado" HorizontalAlignment="Left" Margin="450,173,0,0" VerticalAlignment="Top" Click="btnMostrarSelecionado_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="375*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnVerificarConexion" Content="Verificar Conexion" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Click="btnVerificarConexion_Click"/>
+        <Button x:Name="btnCargarCategorias" Content="Cargar Categorias" HorizontalAlignment="Left" Margin="159,0,0,0" VerticalAlignment="Center" Click="btnCargarCategorias_Click"/>
+        <ComboBox x:Name="cbxCategorias" HorizontalAlignment="Left" Margin="280,18,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="Nombre" SelectedValuePath="Id"/>
+        <Button x:Name="btnMostrarSeleccionado" Content="Mostrar Seleccionado" HorizontalAlignment="Left" Margin="435,18,0,0" VerticalAlignment="Top" Click="btnMostrarSeleccionado_Click"/>
+        <DataGrid x:Name="dgProductos" Grid.Row="1" IsReadOnly="True" />
+        <Button x:Name="btnCargarProductos" Content="Cargar Productos" HorizontalAlignment="Left" Margin="649,18,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.449,0.653" Click="btnCargarProductos_Click"/>
+
     </Grid>
 </Window>

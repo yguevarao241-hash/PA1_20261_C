@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Microsoft.Data.SqlClient;
+using System.Data;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
+
 
 namespace SQLserverEjemplos
 {
@@ -20,42 +22,40 @@ namespace SQLserverEjemplos
     /// </summary>
     public partial class MainWindow : Window
     {
-        String CadenaConexion = "Server=.;Database=Northwind;Integrated Security=true;TrustServerCertificate=true;";
-
+        string cadenaConexion = "Server=.\\SQLEXPRESS;Database=Northwind;Integrated Security=True;TrustServerCertificate=True;";
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void btnVerificacionConexion_Click(object sender, RoutedEventArgs e)
+        private void btnVerificarConexion_Click(object sender, RoutedEventArgs e)
         {
-
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection con = new SqlConnection(cadenaConexion))
             {
                 try
                 {
-                    conexion.Open();
-                    MessageBox.Show("Conexión exitosa: Base de datos = " + conexion.Database);
+                    con.Open();
+                    MessageBox.Show($"Conexion exitosa: Base de Datos={con.Database}");
                 }
-                catch (Exception ex)
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Error al conectar: " + ex.Message);
+                    MessageBox.Show($"Error en conexion: {ex.Message}");
                 }
             }
         }
 
         private void btnCargarCategorias_Click(object sender, RoutedEventArgs e)
         {
-            string query = "SELECT CategoryID, CategoryName FROM Categories";
+            string query = "SELECT CategoryID,CategoryName FROM dbo.Categories";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection con = new SqlConnection(cadenaConexion))
             {
                 try
                 {
-                    SqlCommand comando = new SqlCommand(query, conexion);
-                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    con.Open();
 
-                    using (SqlDataReader reader = comando.ExecuteReader(System.Data.CommandBehavior.CloseConnection))
+                    using (SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection))
                     {
                         cbxCategorias.Items.Clear();
                         while (reader.Read())
@@ -71,29 +71,45 @@ namespace SQLserverEjemplos
                     }
 
                 }
-                catch (Exception ex)
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Error al cargar categorías: " + ex.Message);
+                    MessageBox.Show($"Error al ejecutar la sentencia sql: {ex.Message}");
                 }
             }
         }
 
-        private void btnMostrarSelecionado_Click(object sender, RoutedEventArgs e)
+        private void btnMostrarSeleccionado_Click(object sender, RoutedEventArgs e)
         {
             if (cbxCategorias.SelectedItem != null)
             {
                 dynamic categoriaSeleccionada = cbxCategorias.SelectedItem;
-                int idCategoria = categoriaSeleccionada.Id;
-                string nombreCategoria = categoriaSeleccionada.Nombre;
-                MessageBox.Show($"Categoría seleccionada: ID = {idCategoria}, Nombre = {nombreCategoria}");
+                int id = categoriaSeleccionada.Id;
+                string nombre = categoriaSeleccionada.Nombre;
 
-                MessageBox.Show($"Categoría seleccionada: ID = {cbxCategorias.SelectedValue}");
+                MessageBox.Show($"Calegoria Selecionada: Id={id}, Nombre={nombre}");
+
+
+                MessageBox.Show($"Calegoria Selecionada: Id={cbxCategorias.SelectedValue}");
             }
-            else
+        }
+
+        private void btnCargarProductos_Click(object sender, RoutedEventArgs e)
+        {
+            string query = "SELECT ProductID, ProductName, UnitPrice, UnitsInStock FROM Products WHERE Discontinued = 0";
+            using (SqlConnection con = new SqlConnection(cadenaConexion))
             {
-                MessageBox.Show("No se ha seleccionado ninguna categoría.");
+                try
+                {
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(query, con);
+                    DataSet dataSet = new DataSet();
+                    dataAdapter.Fill(dataSet, "Producto");
+                    dgProductos.ItemsSource = dataSet.Tables["Producto"].DefaultView;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Error al ejecutar sql: {ex.Message}");
+                }
             }
-
         }
     }
 }

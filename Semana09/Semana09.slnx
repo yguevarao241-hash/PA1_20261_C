@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="EnlaceDatos/EnlaceDatos.csproj" />
+  <Project Path="Northwind/Northwind.csproj" Id="22484783-4f92-46bf-9b8a-6a87a1b5e87f" />
   <Project Path="SQLserverEjemplos/SQLserverEjemplos.csproj" />
 </Solution>
