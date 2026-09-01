@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
 
 namespace ActualizarRegistros
 {
@@ -32,6 +33,7 @@ namespace ActualizarRegistros
 
         private void Nuevo()
         {
+            txtId.Clear();
             txtNombre.Clear();
             txtDescripcion.Clear();
             txtNombre.Focus();
@@ -45,15 +47,39 @@ namespace ActualizarRegistros
                 {
                     conn.Open();
                     SqlCommand cmd = conn.CreateCommand();
-                    cmd.CommandText = "INSERT INTO Categories(CategoryName,Description) VALUES(@Nombre,@Descripcion); select SCOPE_IDENTITY();";
                     cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.NVarChar, 15).Value = txtNombre.Text;
-                    cmd.Parameters.Add("@Descripcion", System.Data.SqlDbType.NVarChar, 100).Value = txtNombre.Text;
-                    int idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
 
-                    MessageBox.Show($"Categoria agregada con Id {idGenerado}");
-                    this.Nuevo();
-                    this.CargarListaCategorias();
+                    string id = txtId.Text;
+                    if(string.IsNullOrEmpty(id))
+                    {
+                        cmd.CommandText = "INSERT INTO Categories(CategoryName,Description) VALUES(@Nombre,@Descripcion); select SCOPE_IDENTITY();";
+                        cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.NVarChar, 15).Value = txtNombre.Text;
+                        cmd.Parameters.Add("@Descripcion", System.Data.SqlDbType.NText).Value = string.IsNullOrEmpty(txtDescripcion.Text) ? (object)DBNull.Value : txtDescripcion.Text;
+                        int idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        MessageBox.Show($"Categoria agregada con Id {idGenerado}");
+                        this.Nuevo();
+                        this.CargarListaCategorias();
+                    }
+                    else
+                    {
+                        cmd.CommandText = @"UPDATE CATEGORIES 
+                                            SET CategoryName=@Nombre,
+                                            Description=@Descripcion
+                                            WHERE CategoryID=@Id";
+                        cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.NVarChar, 15).Value = txtNombre.Text;
+                        cmd.Parameters.Add("@Descripcion", System.Data.SqlDbType.NText).Value = string.IsNullOrEmpty(txtDescripcion.Text)?(object)DBNull.Value: txtDescripcion.Text;
+                        cmd.Parameters.Add("@Id", System.Data.SqlDbType.Int).Value = id;
+
+                        int filas = cmd.ExecuteNonQuery();
+
+                        if(filas > 0)
+                        {
+                            MessageBox.Show("Categoria actualizada");
+                            this.CargarListaCategorias();
+                        }
+                    }
+                    
                 }
             }
             catch (SqlException ex)
@@ -89,7 +115,7 @@ namespace ActualizarRegistros
                         {
                             Id = reader.GetInt32(0),
                             Nombre = reader.GetString(1),
-                            Descripcion = reader.GetString(2)
+                            Descripcion = reader.IsDBNull("Description")?null: reader.GetString(2)
                         });
                     }
                     dgCategorias.ItemsSource = lista;
@@ -102,6 +128,17 @@ namespace ActualizarRegistros
             catch (Exception ex)
             {
                 MessageBox.Show($"Error general {ex.Message}");
+            }
+        }
+
+        private void dgCategorias_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgCategorias.SelectedItem != null)
+            {
+                Categoria categoria = (Categoria)dgCategorias.SelectedItem;
+                txtId.Text = categoria.Id.ToString();
+                txtNombre.Text = categoria.Nombre.ToString();
+                txtDescripcion.Text = categoria.Descripcion;
             }
         }
     }

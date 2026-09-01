@@ -26,8 +26,8 @@ namespace ActualizarRegistros.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=Northwind;Integrated Security=True;TrustSer" +
-            "verCertificate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True;Trust" +
+            "ServerCertificate=True")]
         public string Northwind {
             get {
                 return ((string)(this["Northwind"]));
